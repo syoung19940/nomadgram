@@ -4,8 +4,11 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
+from rest_framework_jwt.views import obtain_jwt_token
 
 urlpatterns = [
+    path("rest-auth/", include('rest_auth.urls')),
+    path('rest-auth/registration/', include('rest_auth.registration.urls')),
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
     path(
         "about/",
@@ -20,7 +23,11 @@ urlpatterns = [
         include("nomadgram.users.urls", namespace="users"),
     ),
     path("accounts/", include("allauth.urls")),
+    
     # Your stuff: custom urls includes go here
+    path("images/",include('nomadgram.images.urls',namespace = 'images'),),
+    path("notifications/",include('nomadgram.notifications.urls', namespace = 'notifications')),
+
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
 )
