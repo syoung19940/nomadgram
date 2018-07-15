@@ -12,6 +12,7 @@ class Container extends Component {
 
     static propTypes = {
         facebookLogin: PropTypes.func.isRequired,
+        createAccount: PropTypes.func.isRequired,
     }
 
     render() {
@@ -34,7 +35,10 @@ class Container extends Component {
     }
 
     _handleSubmit = event => {
+        const email = this.state.phoneoremail;
         event.preventDefault()
+        this.props.createAccount(this.state.username,this.state.password,email);
+
     }
     _handleFacebookLogin = response => {
         this.props.facebookLogin(response.accessToken);

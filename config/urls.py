@@ -8,16 +8,11 @@ from rest_framework_jwt.views import obtain_jwt_token
 from nomadgram import views
 
 urlpatterns = [
-    path("rest-auth/", include('rest_auth.urls')),
-    path('rest-auth/registration/', include('rest_auth.registration.urls')),
-    path(
-        "about/",
-        TemplateView.as_view(template_name="pages/about.html"),
-        name="about",
-    ),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
+    path("rest-auth/", include('rest_auth.urls')),
+    path('rest-auth/registration/', include('rest_auth.registration.urls')),
     path(
         "users/",
         include("nomadgram.users.urls", namespace="users"),
