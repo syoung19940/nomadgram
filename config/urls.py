@@ -5,11 +5,11 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 from rest_framework_jwt.views import obtain_jwt_token
+from nomadgram import views
 
 urlpatterns = [
     path("rest-auth/", include('rest_auth.urls')),
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
-    path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
     path(
         "about/",
         TemplateView.as_view(template_name="pages/about.html"),
@@ -27,6 +27,7 @@ urlpatterns = [
     # Your stuff: custom urls includes go here
     path("images/",include('nomadgram.images.urls',namespace = 'images'),),
     path("notifications/",include('nomadgram.notifications.urls', namespace = 'notifications')),
+    path("",views.ReactAppView.as_view()),
 
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
