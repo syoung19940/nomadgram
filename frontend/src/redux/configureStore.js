@@ -4,6 +4,7 @@ import createHistory from "history/createBrowserHistory";
 import { composeWithDevTools } from "redux-devtools-extension"
 import thunk from "redux-thunk";
 import user from 'redux/modules/user';
+import photo from 'redux/modules/photo';
 import { i18nState } from "redux-i18n";
 
 const history = createHistory();
@@ -19,6 +20,7 @@ if( env === "development") {
 
 const reducer = combineReducers({
     user,
+    photo,
     routing: routerReducer,
     i18nState
 });
