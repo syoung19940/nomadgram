@@ -88,7 +88,7 @@ class UserProfile(APIView):
             return Response(status = status.HTTP_404_NOT_FOUND)
         
         elif found_user.username != user.username:
-            return Response(status= status.HTTP_401_UNAUTHORIZED)
+            return Response(status= status.HTTP_400_BAD_REQUEST)
         
         else:
             serializer = serializers.UserProfileSerializer(found_user, data = request.data, partial = True)
@@ -174,7 +174,7 @@ class ChangePassword(APIView):
                         return Response(status = status.HTTP_200_OK)
             return Response(status= status.HTTP_400_BAD_REQUEST)
 
-        return Response(status =status.HTTP_401_UNAUTHORIZED)
+        return Response(status =status.HTTP_400_BAD_REQUEST)
 
 class FacebookLogin(SocialLoginView):
     adapter_class = FacebookOAuth2Adapter

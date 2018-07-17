@@ -60,19 +60,22 @@ class ImageSerializer(TaggitSerializer,serializers.ModelSerializer):
     like_set = LikeSerializer(many = True) #related도 serializer로 대체 가능.
     comments = CommentSerializer(many = True)
     tags = TagListSerializerField()
+    creator = FeedUserSerializer(read_only = True)
+
 
     class Meta:
         model = models.Image
         fields = (
             'id',
-            'file',
+            'creator',
             'location',
+            'file',
+            'like_count',
             'caption',
             'comments',#model엔 없지만 foriegn key에 의해 자동 작성됨. related name 작성 가능.
-            'like_count',
-            'like_set',
-            'tags',
             'created_at',
+            'like_set',
+            'tags'
         )
 
 class InputImageSerializer(serializers.ModelSerializer):

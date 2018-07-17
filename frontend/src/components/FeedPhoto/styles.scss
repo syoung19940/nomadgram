@@ -1,0 +1,25 @@
+.feed-photo {
+    width: 90%;
+    max-width: $max-width-page;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @include boxBorder(no);
+    header {
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        img {
+            @include boxBorder(no);
+            border-radius: 20px;
+            height: 80%;
+            margin: 10% 10px;
+        }
+        .profile{
+            display: flex;
+            flex-direction: column;
+        }
+        @include boxBorder(no);
+    }
+}
