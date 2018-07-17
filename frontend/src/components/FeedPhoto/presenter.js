@@ -3,6 +3,9 @@ import styles from './styles.scss';
 import PropTypes from 'prop-types';
 import PhotoAction from '../PhotoAction';
 import PhotoComments from '../PhotoComments';
+import TimeStamp from '../TimeStamp';
+import CommentBox from '../CommentBox';
+
 
 const FeedPhoto = (props,context) =>{
     console.log(props)
@@ -25,6 +28,8 @@ const FeedPhoto = (props,context) =>{
                 creatorName={props.creator.username}
                 caption = {props.caption}
                 comments = {props.comments}/>
+            <TimeStamp date = {props.natural_time}/>
+            <CommentBox/>
         </div>
     </div>
     )
@@ -48,7 +53,7 @@ FeedPhoto.propTypes = {
             }).isRequired
         })
     ).isRequired,
-    created_at:PropTypes.string.isRequired
+    natural_time: PropTypes.string.isRequired
 };
 
 export default FeedPhoto;

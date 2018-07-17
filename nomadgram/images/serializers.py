@@ -75,7 +75,8 @@ class ImageSerializer(TaggitSerializer,serializers.ModelSerializer):
             'comments',#model엔 없지만 foriegn key에 의해 자동 작성됨. related name 작성 가능.
             'created_at',
             'like_set',
-            'tags'
+            'tags',
+            'natural_time'
         )
 
 class InputImageSerializer(serializers.ModelSerializer):
