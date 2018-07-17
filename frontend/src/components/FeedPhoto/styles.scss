@@ -1,25 +1,48 @@
 .feed-photo {
-    width: 90%;
-    max-width: $max-width-page;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    @include boxBorder(no);
-    header {
-        height: 40px;
+    width: 100%;
+    max-width: $max-card-width;
+    margin-bottom: 60px;
+    @include boxBorder(yes);
+    @include breakpoint("phone"){
+        background-color: transparent;
+        border: 0;
+        margin-bottom: 30px;
+    }
+    &:first-child {
+        margin-top: 20px;
+      }
+    &:last-child {
+        margin-bottom: 0;
+      }
+    .header {
+        padding: 15px;
         display: flex;
-        flex-direction: row;
+        //flex-direction: row;
         align-items: center;
-        img {
-            @include boxBorder(no);
-            border-radius: 20px;
-            height: 80%;
-            margin: 10% 10px;
+        border-bottom: 1px solid $border-color;
+        .image {
+            width: 30px;
+            border-radius: 50%;
+            margin-right: 15px
         }
-        .profile{
+        .header-column{
             display: flex;
             flex-direction: column;
+            .creator{
+                font-weight: 600;
+                margin-bottom: 5px;
+                .location{
+                    font-size: $small-font-size - 2;
+                }
+            }
         }
-        @include boxBorder(no);
+    }
+    img{
+        width:100%,
+    }
+    .meta{
+        padding: 15px;
+        padding-bottom: 0;
+        padding-top:10px;
     }
 }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './styles.scss';
 
 const TimeStamp = (props) => (
-    <span>{props.date}</span>
+    <span className={styles.time}>{props.date}</span>
 )
 
 TimeStamp.propTypes = {

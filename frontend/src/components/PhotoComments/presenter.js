@@ -1,20 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './styles.scss';
 
 const PhotoComments = (props,context) => (
-    <div>
-        <ul>
+    <div className={styles.comments}>
+        <ul className={styles.list}>
             <Comment 
                 username = {props.creatorName}
-                message = {props.message}/> 
+                message = {props.caption}/> 
             {props.comments.map(comment => (<Comment username = {comment.creator.username} message = {comment.message} key={comment.id}/>))}
         </ul>
     </div>
 )
 
 const Comment = (props) => (
-    <li>
-        <span>{props.username}</span> <span>{props.message}</span>
+    <li className={styles.comment}>
+        <span className={styles.username}>{props.username}</span>
+        <span className={styles.message}>{props.message}</span>
     </li>
 )
 

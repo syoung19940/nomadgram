@@ -4,20 +4,18 @@ import styles from './styles.scss';
 import Ionicon from 'react-ionicons';
 
 const PhotoAction = (props,context) => (
-    <div className = {styles.photoaction}>
-        <div>
-            <span>
+    <div className={styles.actions}>
+        <div className={styles.icons}>
+            <span className={styles.icon}>
                 <Ionicon icon = "ios-heart-outline"  fontSize="28px" color="black"></Ionicon>
             </span>
-            <span>
+            <span className={styles.icon}>
                 <Ionicon icon="ios-text-outline" fontSize="28px" color="black"></Ionicon>
             </span>
         </div>
-        <div className = {styles.likesCount}>
-            <span>
-                {props.number}{" "}{props.number === 1 ? context.t('like'): context.t('likes')}
-            </span>
-        </div>
+        <span className={styles.likes}>
+            {props.number}{" "}{props.number === 1 ? context.t('like'): context.t('likes')}
+        </span>
     </div>
 )
 
