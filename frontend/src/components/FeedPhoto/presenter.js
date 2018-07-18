@@ -24,24 +24,26 @@ const FeedPhoto = (props,context) =>{
         </header>
         <img src = {props.file} alt = {props.caption}></img>
         <div className={styles.meta}>
-            <PhotoAction number = {props.like_count}/>
+            <PhotoAction photoId = {props.id} number = {props.like_count} isLiked = {props.is_liked}/>
             <PhotoComments
                 creatorName={props.creator.username}
                 caption = {props.caption}
                 comments = {props.comments}/>
             <TimeStamp date = {props.natural_time}/>
-            <CommentBox/>
+            <CommentBox photoId = {props.id}/>
         </div>
     </div>
     )
 }
 
 FeedPhoto.propTypes = {
+    id: PropTypes.number.isRequired,
     creator: PropTypes.shape({
         profile_image: PropTypes.string,
         username: PropTypes.string.isRequired
     }).isRequired,
     file: PropTypes.string.isRequired,
+    is_liked: PropTypes.bool.isRequired,
     location: PropTypes.string,
     like_count: PropTypes.number.isRequired,
     caption: PropTypes.string.isRequired,
